@@ -7,7 +7,7 @@ import { ValidateEnv } from 'src/shared';
 @Injectable()
 export class BinanceConfig {
   @IsUrl(
-    {},
+    { protocols: ['wss'] },
     {
       message: `${BinanceConfig.name} - Binance stream socket url should be valid url`,
     },

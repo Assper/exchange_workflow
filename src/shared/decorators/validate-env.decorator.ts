@@ -12,6 +12,7 @@ export const ValidateEnv = <T extends Constructor<any>>() => {
         if (errors.length > 0) {
           throw new EnvError(
             errors.map((error) => error.toString()).join('\n'),
+            errors as unknown as Error,
           );
         }
       }

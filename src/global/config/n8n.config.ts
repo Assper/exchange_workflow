@@ -7,7 +7,7 @@ import { ValidateEnv } from 'src/shared';
 @Injectable()
 export class N8NConfig {
   @IsUrl(
-    {},
+    { require_tld: false },
     {
       message: `${N8NConfig.name} - N8N exchange workflow url should be valid url`,
     },

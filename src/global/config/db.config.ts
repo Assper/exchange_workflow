@@ -7,7 +7,7 @@ import { ValidateEnv } from 'src/shared';
 @Injectable()
 export class DbConfig {
   @IsUrl(
-    {},
+    { require_tld: false, protocols: ['http', 'https', 'ws', 'wss'] },
     {
       message: `${DbConfig.name} - rpc should be valid url`,
     },
