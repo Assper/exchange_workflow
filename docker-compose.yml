@@ -1,0 +1,19 @@
+services:
+  surrealdb:
+    image: surrealdb/surrealdb:latest
+    container_name: surrealdb
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./surreal_data:/db
+    environment:
+      - SURREAL_USER=root
+      - SURREAL_PASS=root
+    # 'start' command with storage path and auth enabled
+    command:
+      - start
+      - --log=info
+      - --user=${SURREAL_USER:-root}
+      - --pass=${SURREAL_PASS:-root}
+      - rocksdb:/db/database.db
+    restart: always
