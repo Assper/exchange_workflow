@@ -36,8 +36,8 @@ export class AppConfig {
   readonly isProd: boolean
 
   constructor(private readonly configService: NestConfigService) {
-    this.env = this.configService.get<Env>('appEnv') || 'development'
-    this.port = this.configService.get<number>('port') || 3000
+    this.env = this.configService.getOrThrow<Env>('appEnv')
+    this.port = this.configService.getOrThrow<number>('port')
     this.isDev = this.env === 'development'
     this.isTest = this.env === 'test'
     this.isProd = this.env === 'production'

@@ -46,9 +46,9 @@ export class ProcessExchangeUseCase implements UseCase<Exchange, void> {
     const prev = await this.exchangeRepo.readPrev(entity)
     const diff = prev ? Math.abs(entity.rate - prev.rate) : config.threshold
     if (diff >= config.threshold) {
-      this.logger.info(`Detect exchange diff threshold overflow:`)
+      this.logger.info('Detect exchange diff threshold overflow:')
       this.logger.info(`Exchange: ${entity.id}`)
-      if (prev) this.logger.info(`Prev: ${prev.rate}`)
+      this.logger.info(`Prev: ${prev?.rate ?? 'N/A'}`)
       this.logger.info(`Current: ${entity.rate}`)
       this.logger.info(`Threshold: ${config.threshold}`)
 
