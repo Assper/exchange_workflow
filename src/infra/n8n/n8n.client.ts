@@ -1,8 +1,8 @@
-import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
-import { firstValueFrom } from 'rxjs';
-import { ExchangeWorkflow, ExchangeWorkflowData } from 'src/core';
-import { N8NConfig } from 'src/global/config/n8n.config';
+import type { HttpService } from '@nestjs/axios'
+import { Injectable } from '@nestjs/common'
+import { firstValueFrom } from 'rxjs'
+import type { ExchangeWorkflow, ExchangeWorkflowData } from 'src/core'
+import type { N8NConfig } from 'src/global/config/n8n.config'
 
 @Injectable()
 export class N8NClient implements ExchangeWorkflow {
@@ -17,11 +17,11 @@ export class N8NClient implements ExchangeWorkflow {
         headers: {
           Authorization: this.n8NConfig.apiToken,
         },
-      });
-      await firstValueFrom(req$);
+      })
+      await firstValueFrom(req$)
     } catch (error) {
-      console.error('Error running workflow:', error);
-      throw error;
+      console.error('Error running workflow:', error)
+      throw error
     }
   }
 }

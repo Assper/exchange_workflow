@@ -1,6 +1,6 @@
-import { Module } from '@nestjs/common';
-import { ExchangeProducer } from './exchange.producer';
-import { DbModule } from '../db/db.module';
+import { Module } from '@nestjs/common'
+import { DbModule } from '../db/db.module'
+import { ExchangeProducer } from './exchange.producer'
 
 @Module({
   imports: [DbModule],

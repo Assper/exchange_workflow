@@ -1,5 +1,5 @@
-import { UseCaseException } from './abstract/use-case.error';
-import { ErrorCode } from './enums/error-code.enum';
+import { UseCaseException } from './abstract/use-case.error'
+import { ErrorCode } from './enums/error-code.enum'
 
 export class ValidateError extends UseCaseException {
   constructor(errors: unknown[], message = 'Validation error', cause?: Error) {
@@ -8,6 +8,6 @@ export class ValidateError extends UseCaseException {
       message,
       cause,
       details: { errors },
-    });
+    })
   }
 }

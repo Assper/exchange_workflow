@@ -1,8 +1,4 @@
-import {
-  ExceptionDetails,
-  ExceptionLayer,
-  IException,
-} from '../interface/exception.interface'
+import type { ExceptionDetails, ExceptionLayer, IException } from '../interface/exception.interface'
 
 export abstract class BaseException extends Error implements IException {
   abstract readonly layer: ExceptionLayer

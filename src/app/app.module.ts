@@ -1,6 +1,6 @@
-import { Module } from '@nestjs/common';
-import { ExchangeConsumer } from './exchange.consumer';
-import { BinanceModule } from 'src/infra/binance/binance.module';
+import { Module } from '@nestjs/common'
+import { BinanceModule } from 'src/infra/binance/binance.module'
+import { ExchangeConsumer } from './exchange.consumer'
 
 @Module({
   imports: [BinanceModule],

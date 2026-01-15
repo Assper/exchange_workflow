@@ -1,8 +1,8 @@
-import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
-import { OnEvent } from '@nestjs/event-emitter';
-import { ProcessExchangeUseCase, Exchange } from 'src/core';
-import { ExchangeProducer } from 'src/infra/binance/exchange.producer';
-import type { Plain } from 'src/shared';
+import { Injectable, type OnModuleDestroy, type OnModuleInit } from '@nestjs/common'
+import { OnEvent } from '@nestjs/event-emitter'
+import { Exchange, type ProcessExchangeUseCase } from 'src/core'
+import type { ExchangeProducer } from 'src/infra/binance/exchange.producer'
+import type { Plain } from 'src/shared'
 
 @Injectable()
 export class ExchangeConsumer implements OnModuleDestroy, OnModuleInit {
@@ -12,20 +12,20 @@ export class ExchangeConsumer implements OnModuleDestroy, OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    await this.exchangeProducer.connect();
+    await this.exchangeProducer.connect()
   }
 
   onModuleDestroy() {
-    this.exchangeProducer.disconnect();
+    this.exchangeProducer.disconnect()
   }
 
   @OnEvent('exchange')
   async process(data: Plain<Exchange>) {
     try {
-      const entity = Exchange.fromPlain(data);
-      await this.processExchange.exec(entity);
+      const entity = Exchange.fromPlain(data)
+      await this.processExchange.exec(entity)
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
 }

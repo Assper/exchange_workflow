@@ -1,12 +1,12 @@
-import { Module } from '@nestjs/common';
-import pino from 'pino';
-import { LoggerModule } from 'nestjs-pino';
-import { CoreModule } from './core/core.module';
-import { AppModule } from './app/app.module';
-import { DbModule } from './infra/db/db.module';
-import { EventEmitterModule } from '@nestjs/event-emitter';
-import { N8nModule } from './infra/n8n/n8n.module';
-import { ConfigModule } from './global/config/config.module';
+import { Module } from '@nestjs/common'
+import { EventEmitterModule } from '@nestjs/event-emitter'
+import { LoggerModule } from 'nestjs-pino'
+import pino from 'pino'
+import { AppModule } from './app/app.module'
+import { CoreModule } from './core/core.module'
+import { ConfigModule } from './global/config/config.module'
+import { DbModule } from './infra/db/db.module'
+import { N8nModule } from './infra/n8n/n8n.module'
 
 @Module({
   imports: [

@@ -1,12 +1,13 @@
 import {
-  registerDecorator,
-  ValidationOptions,
-  ValidationArguments,
   isNumber,
-} from 'class-validator';
+  registerDecorator,
+  type ValidationArguments,
+  type ValidationOptions,
+} from 'class-validator'
+import type { ExchangeLimit } from '../exchange-limit'
 
 export function IsDownLimit(validationOptions?: ValidationOptions) {
-  return function (object: object, propertyName: string) {
+  return (object: object, propertyName: string) => {
     registerDecorator({
       name: 'isDownLimit',
       target: object.constructor,
@@ -14,10 +15,10 @@ export function IsDownLimit(validationOptions?: ValidationOptions) {
       options: validationOptions,
       validator: {
         validate(value: unknown, args: ValidationArguments) {
-          const upLimit = (args.object as any)['up'];
-          return isNumber(value) && value >= 0 && value < upLimit;
+          const upLimit = (args.object as ExchangeLimit).up
+          return isNumber(value) && value >= 0 && value < upLimit
         },
       },
-    });
-  };
+    })
+  }
 }

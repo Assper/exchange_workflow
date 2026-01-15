@@ -1,6 +1,6 @@
-import { HttpStatus } from '@nestjs/common';
-import { InfraException } from './abstract/infra.exception';
-import { ErrorCode } from './enums/error-code.enum';
+import { HttpStatus } from '@nestjs/common'
+import { InfraException } from './abstract/infra.exception'
+import { ErrorCode } from './enums/error-code.enum'
 
 export class HttpError extends InfraException {
   constructor(
@@ -12,6 +12,6 @@ export class HttpError extends InfraException {
       code: ErrorCode.Http,
       message,
       cause,
-    });
+    })
   }
 }

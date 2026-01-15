@@ -1,70 +1,51 @@
-import {
-  IsNotEmpty,
-  IsNumber,
-  IsPositive,
-  IsString,
-  IsUUID,
-  Min,
-} from 'class-validator';
-import { Entity, Json, Plain, Serializable, Validate } from 'src/shared';
+import { IsNotEmpty, IsNumber, IsPositive, IsString, IsUUID, Min } from 'class-validator'
+import { type Entity, type Json, type Plain, type Serializable, Validate } from 'src/shared'
 
 @Validate()
 export class Exchange implements Entity, Serializable {
   @IsUUID()
-  readonly id: string;
+  readonly id: string
 
   @IsNumber()
   @Min(0)
-  readonly rate: number;
+  readonly rate: number
 
   @IsString()
   @IsNotEmpty()
-  readonly from: string;
+  readonly from: string
 
   @IsString()
   @IsNotEmpty()
-  readonly to: string;
+  readonly to: string
 
   @IsPositive()
-  readonly timestamp: number;
+  readonly timestamp: number
 
-  constructor(
-    id: string,
-    rate: number,
-    from: string,
-    to: string,
-    timestamp = Date.now(),
-  ) {
-    this.id = id;
-    this.rate = rate;
-    this.from = from;
-    this.to = to;
-    this.timestamp = timestamp;
+  constructor(id: string, rate: number, from: string, to: string, timestamp = Date.now()) {
+    this.id = id
+    this.rate = rate
+    this.from = from
+    this.to = to
+    this.timestamp = timestamp
   }
 
   static fromPlain(plain: Plain<Exchange>): Exchange {
-    return new Exchange(
-      plain.id,
-      plain.rate,
-      plain.from,
-      plain.to,
-      plain.timestamp,
-    );
+    return new Exchange(plain.id, plain.rate, plain.from, plain.to, plain.timestamp)
   }
 
   static fromJson(json: Json): Exchange {
     try {
-      const plain = JSON.parse(json) as Plain<Exchange>;
-      return this.fromPlain(plain);
+      const plain = JSON.parse(json) as Plain<Exchange>
+      return Exchange.fromPlain(plain)
     } catch (error: unknown) {
       throw new Error(`Invalid JSON data for ${Exchange.name}`, {
         cause: error,
-      });
+      })
     }
   }
 
   toJson(): Json {
-    return JSON.stringify(this);
+    return JSON.stringify(this)
   }
 
   toPlain(): Plain<Exchange> {
@@ -74,6 +55,6 @@ export class Exchange implements Entity, Serializable {
       from: this.from,
       to: this.to,
       timestamp: this.timestamp,
-    };
+    }
   }
 }

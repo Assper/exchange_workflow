@@ -1,6 +1,6 @@
-import { DynamicModule } from '@nestjs/common';
-import { ProcessExchangeUseCase } from './use-case/process-exchange.use-case';
-import { ModuleDefinition } from '@nestjs/core/interfaces/module-definition.interface';
+import type { DynamicModule } from '@nestjs/common'
+import type { ModuleDefinition } from '@nestjs/core/interfaces/module-definition.interface'
+import { ProcessExchangeUseCase } from './use-case/process-exchange.use-case'
 
 export class CoreModule {
   static forRoot(deps: ModuleDefinition[]): DynamicModule {
@@ -10,6 +10,6 @@ export class CoreModule {
       imports: deps,
       providers: [ProcessExchangeUseCase],
       exports: [ProcessExchangeUseCase],
-    };
+    }
   }
 }

@@ -1,12 +1,8 @@
-import {
-  registerDecorator,
-  ValidationOptions,
-  ValidationArguments,
-  isNumber,
-} from 'class-validator';
+import { isNumber, registerDecorator, type ValidationArguments, type ValidationOptions } from 'class-validator'
+import type { Limit } from '../entities/limit.entity'
 
 export function IsUpLimit(validationOptions?: ValidationOptions) {
-  return function (object: object, propertyName: string) {
+  return (object: object, propertyName: string) => {
     registerDecorator({
       name: 'isUpLimit',
       target: object.constructor,
@@ -14,10 +10,10 @@ export function IsUpLimit(validationOptions?: ValidationOptions) {
       options: validationOptions,
       validator: {
         validate(value: unknown, args: ValidationArguments) {
-          const downLimit = (args.object as any)['down'];
-          return isNumber(value) && value > 0 && value > downLimit;
+          const downLimit = (args.object as Limit).down
+          return isNumber(value) && value > 0 && value > downLimit
         },
       },
-    });
-  };
+    })
+  }
 }

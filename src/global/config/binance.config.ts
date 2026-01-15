@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { ConfigService as NestConfigService } from '@nestjs/config';
-import { IsUrl } from 'class-validator';
-import { ValidateEnv } from 'src/shared';
+import { Injectable } from '@nestjs/common'
+import type { ConfigService as NestConfigService } from '@nestjs/config'
+import { IsUrl } from 'class-validator'
+import { ValidateEnv } from 'src/shared'
 
 @ValidateEnv()
 @Injectable()
@@ -12,11 +12,9 @@ export class BinanceConfig {
       message: `${BinanceConfig.name} - Binance stream socket url should be valid url`,
     },
   )
-  readonly streamSocket: string;
+  readonly streamSocket: string
 
   constructor(private readonly configService: NestConfigService) {
-    this.streamSocket = this.configService.getOrThrow<string>(
-      'binance.streamSocket',
-    );
+    this.streamSocket = this.configService.getOrThrow<string>('binance.streamSocket')
   }
 }

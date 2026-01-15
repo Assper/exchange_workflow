@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { EXCHANGE_REPO, LIMIT_REPO } from 'src/core/provider-tokens';
-import { ExchangeRepoIml } from './repos/exchange.repo';
-import { LimitRepoIml } from './repos/limit.repo';
-import { SurrealClient } from './surreal/surreal.client';
+import { Module } from '@nestjs/common'
+import { EXCHANGE_REPO, LIMIT_REPO } from 'src/core/provider-tokens'
+import { ExchangeRepoIml } from './repos/exchange.repo'
+import { LimitRepoIml } from './repos/limit.repo'
+import { SurrealClient } from './surreal/surreal.client'
 
 const repositories = [
   {
@@ -13,7 +13,7 @@ const repositories = [
     provide: LIMIT_REPO,
     useClass: LimitRepoIml,
   },
-];
+]
 
 @Module({
   providers: [...repositories, SurrealClient],

@@ -15,6 +15,6 @@ export const config = () => ({
     exchangeUrl: process.env.N8N_EXCHANGE_WORKFLOW_URL,
     apiToken: process.env.N8N_API_TOKEN,
   },
-});
+})
 
-export type Config = ReturnType<typeof config>;
+export type Config = ReturnType<typeof config>

@@ -1,5 +1,5 @@
-import { Json } from '../types';
+import type { Json } from '../types'
 
 export interface Serializable {
-  toJson(): Json;
+  toJson(): Json
 }

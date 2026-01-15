@@ -1,5 +1,5 @@
-import { ID } from '../types';
+import type { ID } from '../types'
 
 export interface Entity {
-  readonly id: ID;
+  readonly id: ID
 }

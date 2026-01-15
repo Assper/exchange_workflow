@@ -1,2 +1,2 @@
-export * from './utility.type';
-export * from './alias.type';
+export * from './alias.type'
+export * from './utility.type'
