@@ -48,8 +48,8 @@ export class ProcessExchangeUseCase implements UseCase<Exchange, void> {
     if (diff >= config.threshold) {
       this.logger.info('Detect exchange diff threshold overflow:')
       this.logger.info(`Exchange: ${entity.id}`)
-      this.logger.info(`Prev: ${prev?.rate ?? 'N/A'}`)
-      this.logger.info(`Current: ${entity.rate}`)
+      this.logger.info(`Prev: ${prev?.rate ?? 'N/A'} ${entity.from}/${entity.to}`)
+      this.logger.info(`Current: ${entity.rate} ${entity.from}/${entity.to}`)
       this.logger.info(`Threshold: ${config.threshold}`)
 
       await exchange.save()
