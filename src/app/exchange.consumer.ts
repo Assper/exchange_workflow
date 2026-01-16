@@ -1,7 +1,7 @@
 import { Injectable, type OnModuleDestroy, type OnModuleInit } from '@nestjs/common'
 import { OnEvent } from '@nestjs/event-emitter'
-import { Exchange, type ProcessExchangeUseCase } from 'src/core'
-import type { ExchangeProducer } from 'src/infra/binance/exchange.producer'
+import { Exchange, ProcessExchangeUseCase } from 'src/core'
+import { ExchangeProducer } from 'src/infra/binance/exchange.producer'
 import type { Plain } from 'src/shared'
 
 @Injectable()

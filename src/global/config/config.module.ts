@@ -1,5 +1,5 @@
 import { Global, Module } from '@nestjs/common'
-import { ConfigModule as NestConfigModule } from '@nestjs/config'
+import { ConfigModule } from '@nestjs/config'
 import { AppConfig } from './app.config'
 import { BinanceConfig } from './binance.config'
 import { config } from './config'
@@ -10,8 +10,8 @@ const configs = [AppConfig, BinanceConfig, DbConfig, N8NConfig]
 
 @Global()
 @Module({
-  imports: [NestConfigModule.forRoot({ load: [config] })],
+  imports: [ConfigModule.forRoot({ load: [config] })],
   providers: [...configs],
   exports: [...configs],
 })
-export class ConfigModule {}
+export class AppConfigModule {}

@@ -1,15 +1,12 @@
-import type { HttpService } from '@nestjs/axios'
+import { HttpService } from '@nestjs/axios'
 import { Injectable } from '@nestjs/common'
 import { firstValueFrom } from 'rxjs'
 import type { ExchangeWorkflow, ExchangeWorkflowData } from 'src/core'
-import type { N8NConfig } from 'src/global/config/n8n.config'
+import { N8NConfig } from 'src/global/config/n8n.config'
 
 @Injectable()
 export class N8NClient implements ExchangeWorkflow {
-  constructor(
-    private readonly n8NConfig: N8NConfig,
-    private readonly http: HttpService,
-  ) {}
+  constructor(private readonly n8NConfig: N8NConfig, private readonly http: HttpService) {}
 
   async runExchangeWorkflow(data: ExchangeWorkflowData) {
     try {

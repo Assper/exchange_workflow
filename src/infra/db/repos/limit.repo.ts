@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { Limit, type LimitRepo } from 'src/core'
 import { Decimal, RecordId, Uuid } from 'surrealdb'
-import type { SurrealClient } from '../surreal/surreal.client'
+import { SurrealClient } from '../surreal/surreal.client'
 import { Table } from '../surreal/table.enum'
 
 type LimitRecord = {

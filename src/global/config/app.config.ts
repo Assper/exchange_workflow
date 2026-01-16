@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import type { ConfigService as NestConfigService } from '@nestjs/config'
+import { ConfigService as NestConfigService } from '@nestjs/config'
 import { IsBoolean, IsIn, IsInt, IsPositive } from 'class-validator'
 import { ValidateEnv } from 'src/shared'
 
@@ -36,7 +36,7 @@ export class AppConfig {
   readonly isProd: boolean
 
   constructor(private readonly configService: NestConfigService) {
-    this.env = this.configService.getOrThrow<Env>('appEnv')
+    this.env = this.configService.getOrThrow<Env>('env')
     this.port = this.configService.getOrThrow<number>('port')
     this.isDev = this.env === 'development'
     this.isTest = this.env === 'test'

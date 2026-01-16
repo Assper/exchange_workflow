@@ -1,5 +1,5 @@
 import { Injectable, type OnModuleDestroy, type OnModuleInit } from '@nestjs/common'
-import type { DbConfig } from 'src/global/config/db.config'
+import { DbConfig } from 'src/global/config/db.config'
 import Surreal from 'surrealdb'
 
 @Injectable()

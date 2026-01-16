@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { Exchange, type ExchangeRepo } from 'src/core'
 import { Decimal, RecordId, Uuid } from 'surrealdb'
-import type { SurrealClient } from '../surreal/surreal.client'
+import { SurrealClient } from '../surreal/surreal.client'
 import { Table } from '../surreal/table.enum'
 
 type ExchangeRecord = {
